@@ -25,9 +25,9 @@ function clearError(){
     input_error.forEach(errorDiv => errorDiv.innerHTML = '');
 }
 
-// Create User Ajax Request
-function createUser() {
-    $('#user_create_form').submit(function(event) {
+// Create Room Ajax Request
+function createRoom() {
+    $('#room_create_form').submit(function(event) {
         event.preventDefault();
         $.ajax({
             url: $(this).attr('action'),
@@ -50,10 +50,10 @@ function createUser() {
 
                     Toast.fire({
                         icon: 'success',
-                        title: 'მომხმარებელი წარმატებით დაემატა'
+                        title: 'ოთახი წარმატებით დაემატა'
                     }).then(function() {
                         closeModal('modal');
-                        $('#user_create_form input:not([type="submit"], textarea)').not('[name="_token"]').val('');
+                        $('#room_create_form input:not([type="submit"], textarea)').not('[name="_token"]').val('');
                     });
                 }
             },
@@ -71,9 +71,9 @@ function createUser() {
 }
 
 
-// Edit User Ajax Request
-function editUser() {
-    $('#user_edit_form').submit(function(event) {
+// Edit Room Ajax Request
+function editRoom() {
+    $('#room_edit_form').submit(function(event) {
         event.preventDefault();
         $.ajax({
             url: $(this).attr('action'),
@@ -96,7 +96,7 @@ function editUser() {
 
                     Toast.fire({
                         icon: 'success',
-                        title: 'მომხმარებელი წარმატებით განახლდა'
+                        title: 'ოთახი წარმატებით განახლდა'
                     }).then(function() {
                         closeModal('modal');
                     });
@@ -116,7 +116,7 @@ function editUser() {
 }
 
 // Open Appropriate Modal
-function openModal(modalId, action, userId = null) {
+function openModal(modalId, action, roomId = null) {
     const modal = document.getElementById(modalId);
     const form = modal.querySelector('form');
 
@@ -124,38 +124,38 @@ function openModal(modalId, action, userId = null) {
 
         clearModal();
 
-        form.action = 'user/create';
+        form.action = 'room/create';
         form.method = 'post';
         form.setAttribute('name', 'create');
-        form.setAttribute('id', 'user_create_form');
+        form.setAttribute('id', 'room_create_form');
 
-        modal.querySelector('.modal__title').textContent = 'მომხმარებლის დამატება';
+        modal.querySelector('.modal__title').textContent = 'ოთახის დამატება';
         modal.querySelector('.modal__btn').value = 'დამატება';
 
-        createUser();
+        createRoom();
 
     } else if (action === 'edit') {
 
         clearError();
 
-        form.action = 'user/' + userId;
+        form.action = 'room/' + roomId;
         form.method = 'PUT';
         form.setAttribute('name', 'edit');
-        form.setAttribute('id', 'user_edit_form');
+        form.setAttribute('id', 'room_edit_form');
 
-        modal.querySelector('.modal__title').textContent = 'მომხმარებლის რედაქტირება';
+        modal.querySelector('.modal__title').textContent = 'ოთახის რედაქტირება';
         modal.querySelector('.modal__btn').value = 'რედაქტირება';
 
         $.ajax({
-            url: 'user/' + userId + '/edit',
+            url: 'room/' + roomId + '/edit',
             method: 'GET',
             dataType: 'json',
             success: function (response) {
                 if (response) {
 
                     form.querySelector(`input[name='name']`).value = response.name;
-                    form.querySelector(`input[name='surname']`).value = response.surname;
-                    form.querySelector(`input[name='personal_number']`).value = response.personal_number;
+                    form.querySelector(`input[name='start_date']`).value = response.start_date;
+                    form.querySelector(`input[name='end_date']`).value = response.end_date;
 
                 }
             },
@@ -164,7 +164,7 @@ function openModal(modalId, action, userId = null) {
             }
         });
 
-        editUser();
+        editRoom();
 
     }
     modal.style.display = "flex";

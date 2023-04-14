@@ -29,7 +29,7 @@ return [
     'numeric' => ':attribute ველი უნდა შეიცავდეს მხოლოდ რიცხვებს.',
     'regex' => ':attribute ფორმატი არასწორია',
     'digits' => ':attribute უნდა შეიცავდეს :digits რიცხვს',
-
+    'after' => ':attribute უნდა იყოს :date შემდეგ',
 
     'size' => [
         'numeric' => ':attribute ველი უნდა შეიცავდეს :size რიცხვს',
@@ -41,6 +41,8 @@ return [
         'surname' => 'გვარი',
         'personal_number' => 'პირადი ნომერი',
         'password' => 'პაროლი',
+        'start_date' => 'დაწყების თარიღი',
+        'end_date' => 'დასრულების თარიღი',
     ],
 
 

@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Admin\AdminAuthController;
 use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\Admin\RoomController;
 use App\Http\Controllers\Admin\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -33,6 +34,12 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function () {
         Route::delete('/user/{id}', [UserController::class, 'destroy'])->name('delete_user');
         Route::get('/user/{id}/edit', [UserController::class, 'edit'])->name('edit_user');
         Route::put('/user/{id}', [UserController::class, 'update'])->name('update_user');
+
+        Route::get('/room', [RoomController::class, 'index'])->name('room_list');
+        Route::post('/room/create', [RoomController::class, 'store'])->name('create_room');
+        Route::delete('/room/{id}', [RoomController::class, 'destroy'])->name('delete_room');
+        Route::get('/room/{id}/edit', [RoomController::class, 'edit'])->name('edit_room');
+        Route::put('/room/{id}', [RoomController::class, 'update'])->name('update_room');
 
     });
 

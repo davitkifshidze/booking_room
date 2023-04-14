@@ -28,7 +28,7 @@
                     <i class="fa-regular fa-hospital"></i>
                 </div>
                 <div class="card__info">
-                    <p class="info__number">1020</p>
+                    <p class="info__number">{{ $room }}</p>
                     <p class="info__title">ოთახები</p>
                 </div>
             </div>
@@ -37,7 +37,7 @@
                     <i class="fa-solid fa-users"></i>
                 </div>
                 <div class="card__info">
-                    <p class="info__number">2834</p>
+                    <p class="info__number">{{ $user }}</p>
                     <p class="info__title">მომხმარებლები</p>
                 </div>
             </div>
