@@ -23,15 +23,15 @@
                 </a>
                 <ul class="sidebar__submenu">
                     <li class="sidebar__submenu__item">
-                        <a href="#" class="sidebar__submenu__link">
-                            <i class="sidebar__submenu__link__icon fa-solid fa-house-medical"></i>
-                            <span class="sidebar__submenu__title">ოთახები</span>
+                        <a href="{{ route('user_list') }}" class="sidebar__submenu__link ">
+                            <i class="sidebar__submenu__link__icon fa-solid fa-user-plus"></i>
+                            <span class="sidebar__submenu__title">მომხმარებლები</span>
                         </a>
                     </li>
                     <li class="sidebar__submenu__item">
-                        <a href="#" class="sidebar__submenu__link ">
-                            <i class="sidebar__submenu__link__icon fa-solid fa-user-plus"></i>
-                            <span class="sidebar__submenu__title">მომხმარებლები</span>
+                        <a href="#" class="sidebar__submenu__link">
+                            <i class="sidebar__submenu__link__icon fa-solid fa-house-medical"></i>
+                            <span class="sidebar__submenu__title">ოთახები</span>
                         </a>
                     </li>
                 </ul>

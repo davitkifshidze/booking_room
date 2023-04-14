@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Admin\AdminAuthController;
 use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\Admin\UserController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -27,6 +28,11 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function () {
         Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
         Route::get('/logout', [AdminAuthController::class, 'logout'])->name('logout');
 
+        Route::get('/user', [UserController::class, 'index'])->name('user_list');
+        Route::post('/user/create', [UserController::class, 'store'])->name('create_user');
+        Route::delete('/user/{id}', [UserController::class, 'destroy'])->name('delete_user');
+        Route::get('/user/{id}/edit', [UserController::class, 'edit'])->name('edit_user');
+        Route::put('/user/{id}', [UserController::class, 'update'])->name('update_user');
 
     });
 
