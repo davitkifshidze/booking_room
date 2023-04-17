@@ -4,10 +4,13 @@ namespace App\Models\Admin;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class User extends Model
 {
     use HasFactory;
+
+    protected $table = 'users';
 
     protected $fillable = [
         'name',
@@ -23,5 +26,9 @@ class User extends Model
         'remember_token',
     ];
 
+    public function bookings(): HasMany
+    {
+        return $this->hasMany(Booking::class);
+    }
 
 }

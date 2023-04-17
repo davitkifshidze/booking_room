@@ -1,0 +1,158 @@
+.booking__modal {
+    display: none;
+    position: fixed;
+    z-index: 3;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: var(--black-opacity);
+}
+
+.modal__content {
+    position: relative;
+    width: 50%;
+    background-color: var(--white);
+    margin: auto;
+    border-radius: 10px;
+    animation-name: modal__animation;
+    animation-duration: 0.4s
+}
+
+@keyframes modal__animation {
+    from {
+        top: -50px;
+        opacity: 0;
+    }
+    to {
+        top: 0;
+        opacity: 1;
+    }
+}
+
+.modal__header {
+    margin-top: 10px;
+    padding: 0 20px 10px 20px;
+    background-color: var(--white);
+    color: var(--black);
+    border-bottom: 1px solid var(--gray-main);
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.modal__title {
+    font-size: 16px;
+    color: var(--black);
+    font-weight: bold;
+    font-family: var(--font-Noto-Sans-Georgian);
+}
+
+.close {
+    color: var(--green-btn);
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: var(--green-light);
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.modal__body {
+    padding: 10px 20px 10px 20px;
+}
+
+.form__group {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: row;
+    margin: 15px 10px;
+}
+
+.input__group {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    width: 50%;
+    padding-right: 25px;
+    position: relative;
+}
+
+.label {
+    display: flex;
+    flex-direction: row;
+}
+
+.label p {
+    font-size: 16px;
+    font-family: var(--font-Noto-Sans-Georgian);
+    color: var(--gray-text);
+    padding: 10px 5px 10px 0;
+    display: flex;
+    flex-direction: row;
+}
+
+.label svg {
+    font-size: 5px;
+    font-family: var(--font-Noto-Sans-Georgian);
+    color: var(--red);
+}
+
+.input__group input {
+    background-color: var(--white);
+    border: 1px solid var(--gray-border);
+    padding: 10px;
+    font-family: var(--font-Noto-Sans-Georgian);
+    border-radius: 8px;
+    width: 100% !important;
+}
+
+.form__buttons {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 20px 10px 10px 10px;
+}
+
+.modal__btn {
+    padding: 5px 20px;
+    background-color: var(--green-btn-light);
+    color: var(--white);
+    border-radius: 5px;
+    border: none;
+    margin-right: 15px;
+    font-family: var(--font-Noto-Sans-Georgian);
+}
+
+.modal__btn:hover {
+    background-color: var(--green-btn);
+}
+.input__error {
+    display: flex;
+    width: 100%;
+    height: 20px;
+    color: red;
+    font-size: 12px;
+}
+.select__input{
+    width: 100%;
+    padding: 10px;
+    border: 1px solid var(--gray-border);
+    border-radius: 8px;
+}
+
+#room_id option:first-child {
+    display: none;
+}
+.mbsc-ios.mbsc-datepicker-inline{
+    padding: 30px !important;
+    margin: 30px !important;
+}

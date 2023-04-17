@@ -37,7 +37,7 @@ class UserController extends Controller
             'name' => $request->name,
             'surname' => $request->surname,
             'personal_number' => $request->personal_number,
-            'password' => $request->password,
+            'password' => bcrypt($request->password),
         ]);
 
         return response()->json(['success' => 'create_success']);
@@ -72,7 +72,7 @@ class UserController extends Controller
             'name' => $request->name,
             'surname' => $request->surname,
             'personal_number' => $request->personal_number,
-            'password' => $request->password ?? $user->password,
+            'password' => bcrypt($request->password ?? $user->password),
         ]);
 
         return response()->json(['success' => 'true']);

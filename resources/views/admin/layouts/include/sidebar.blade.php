@@ -37,7 +37,7 @@
                 </ul>
             </li>
             <li class="sidebar__menu__item">
-                <a href="" class="sidebar__menu__link sidebar__menu__link__active">
+                <a href="{{ route('booking') }}" class="sidebar__menu__link">
                     <i class="sidebar__menu__link__icon fa-solid fa-shield-halved"></i>
                     <span class="sidebar__menu__title">ჯავშნები</span>
                 </a>

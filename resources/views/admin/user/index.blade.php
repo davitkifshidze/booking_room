@@ -1,5 +1,7 @@
 @extends('admin.layouts.main_template')
 
+@section('title','User')
+
 @section('style')
     <link rel="stylesheet" href="{{ asset('css/admin/fonts.css') }}">
     <link rel="stylesheet" href="{{ asset('css/admin/app.css') }}">

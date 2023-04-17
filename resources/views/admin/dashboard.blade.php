@@ -1,5 +1,7 @@
 @extends('admin.layouts.main_template')
 
+@section('title','Dashboard')
+
 @section('style')
     <link rel="stylesheet" href="{{ asset('css/admin/fonts.css') }}">
     <link rel="stylesheet" href="{{ asset('css/admin/app.css') }}">
@@ -28,7 +30,7 @@
                     <i class="fa-regular fa-hospital"></i>
                 </div>
                 <div class="card__info">
-                    <p class="info__number">{{ $room }}</p>
+                    <p class="info__number">{{ $rooms }}</p>
                     <p class="info__title">ოთახები</p>
                 </div>
             </div>
@@ -37,8 +39,17 @@
                     <i class="fa-solid fa-users"></i>
                 </div>
                 <div class="card__info">
-                    <p class="info__number">{{ $user }}</p>
+                    <p class="info__number">{{ $users }}</p>
                     <p class="info__title">მომხმარებლები</p>
+                </div>
+            </div>
+            <div class="dash__card">
+                <div class="icon__container bookings__card">
+                    <i class="fa-solid fa-users"></i>
+                </div>
+                <div class="card__info">
+                    <p class="info__number">{{ $bookings }}</p>
+                    <p class="info__title">ჯავშნები</p>
                 </div>
             </div>
 

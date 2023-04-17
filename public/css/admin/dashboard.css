@@ -51,17 +51,11 @@
 .visitor__card svg{
     color: var(--dash-yellow);
 }
-.products__card{
+.bookings__card{
     background-color: var(--dash-orange-box);
 }
-.products__card svg{
+.bookings__card svg{
     color: var(--dash-orange);
-}
-.order__card{
-    background-color: var(--dash-green-box);
-}
-.order__card svg{
-    color: var(--dash-green);
 }
 .info__number{
     font-family: var(--font-Noto-Sans-Georgian);

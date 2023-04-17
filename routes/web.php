@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\AdminAuthController;
+use App\Http\Controllers\Admin\BookingController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\RoomController;
 use App\Http\Controllers\Admin\UserController;
@@ -40,6 +41,14 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function () {
         Route::delete('/room/{id}', [RoomController::class, 'destroy'])->name('delete_room');
         Route::get('/room/{id}/edit', [RoomController::class, 'edit'])->name('edit_room');
         Route::put('/room/{id}', [RoomController::class, 'update'])->name('update_room');
+
+        Route::get('/booking', [BookingController::class, 'index'])->name('booking');
+        Route::get('/booking/create', [BookingController::class, 'create'])->name('booking_form');
+        Route::post('/booking/create', [BookingController::class, 'store'])->name('create_booking');
+        Route::delete('/booking/{id}', [BookingController::class, 'destroy'])->name('delete_booking');
+        Route::get('/booking/room/{id}', [BookingController::class, 'room'])->name('room');
+        Route::post('/booking/filter', [BookingController::class, 'filter'])->name('filter');
+
 
     });
 

@@ -30,6 +30,7 @@ return [
     'regex' => ':attribute ფორმატი არასწორია',
     'digits' => ':attribute უნდა შეიცავდეს :digits რიცხვს',
     'after' => ':attribute უნდა იყოს :date შემდეგ',
+    'exists' => 'არჩეული :attribute არ არსებობს',
 
     'size' => [
         'numeric' => ':attribute ველი უნდა შეიცავდეს :size რიცხვს',
@@ -43,6 +44,8 @@ return [
         'password' => 'პაროლი',
         'start_date' => 'დაწყების თარიღი',
         'end_date' => 'დასრულების თარიღი',
+        'room_id' => 'ოთახი',
+        'user_id' => 'მომხმარებელი',
     ],
 
 
