@@ -40,8 +40,7 @@
         <div class="booking__table__container">
             <div class="booking__header">
 
-                <form action="{{ route('filter') }}" method="POST"  class="search__form" >
-                    @csrf
+                <form action="{{ route('booking') }}" method="GET"  class="search__form" >
 
                     <select class="filter__select" name="room__filter" id="room__filter" placeholder="აირჩიე ოთახი">
                         <option value="">ყველა ოთახი</option>

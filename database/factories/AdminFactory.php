@@ -1,12 +1,12 @@
 <?php
 
-namespace Database\Factories\Admin;
+namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Str;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Admin\Admin>
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Admin>
  */
 class AdminFactory extends Factory
 {
@@ -18,7 +18,6 @@ class AdminFactory extends Factory
     public function definition(): array
     {
         return [
-            //
             'username' => 'booking_room',
             'email' => 'booking_room@gmail.com',
             'password' => bcrypt('admin'),

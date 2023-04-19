@@ -54,6 +54,7 @@ function createUser() {
                     }).then(function() {
                         closeModal('modal');
                         $('#user_create_form input:not([type="submit"], textarea)').not('[name="_token"]').val('');
+                        location.reload();
                     });
                 }
             },
@@ -99,6 +100,7 @@ function editUser() {
                         title: 'მომხმარებელი წარმატებით განახლდა'
                     }).then(function() {
                         closeModal('modal');
+                        location.reload();
                     });
                 }
             },

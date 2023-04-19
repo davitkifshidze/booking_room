@@ -27,14 +27,14 @@ class RequestUser extends FormRequest
 
         if ($this->isMethod('post')) {
             return [
-                'name' => 'required|string|min:3|max:25|regex:/^[\p{L}]+$/u',
+                'name' => 'required|string|min:2|max:25|regex:/^[\p{L}]+$/u',
                 'surname' => 'required|string|min:3|max:25|regex:/^[\p{L}]+$/u',
                 'personal_number' => 'required|numeric|digits:11|unique:users,personal_number',
                 'password' => 'required|string|min:8',
             ];
         } else {
             return [
-                'name' => 'required|string|min:3|max:25|regex:/^[\p{L}\s]+$/u',
+                'name' => 'required|string|min:2|max:25|regex:/^[\p{L}\s]+$/u',
                 'surname' => 'required|string|min:3|max:25|regex:/^[\p{L}\s]+$/u',
                 'personal_number' => [
                     'required',

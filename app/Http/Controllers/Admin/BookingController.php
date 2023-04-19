@@ -4,9 +4,9 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\RequestBooking;
-use App\Models\Admin\Booking;
-use App\Models\Admin\Room;
-use App\Models\Admin\User;
+use App\Models\Booking;
+use App\Models\Room;
+use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 
@@ -16,20 +16,34 @@ class BookingController extends Controller
     /**
      * Display a Booking
      */
-    public function index()
+    public function index(Request $request)
     {
 
-        $bookings = Booking::select('bookings.id', 'rooms.name as room_name', 'users.name as user_name', 'bookings.start_date', 'bookings.end_date', 'bookings.created_at', 'bookings.updated_at')
+        $room_id = $request->input('room__filter');
+        $date = $request->input('date__filter');
+
+        $query = Booking::select('bookings.id', 'rooms.name as room_name', 'users.name as user_name', 'bookings.start_date', 'bookings.end_date', 'bookings.created_at', 'bookings.updated_at')
             ->join('rooms', 'rooms.id', '=', 'bookings.room_id')
             ->join('users', 'users.id', '=', 'bookings.user_id')
-            ->orderBy('bookings.id', 'DESC')
-            ->whereDate('bookings.start_date', '=', Carbon::today())
-            ->get();
+            ->orderBy('bookings.id', 'DESC');
+
+        if ($date):
+            $query->whereDate('bookings.start_date', '=', $date);
+        else:
+            $query->whereDate('bookings.start_date', '=', Carbon::today());
+        endif;
+
+
+        if ($room_id):
+            $query->where('bookings.room_id', '=', $room_id);
+        endif;
+
+        $bookings = $query->get();
 
         $rooms = Room::all();
         $users = User::all();
 
-        return view('admin.booking.index', compact('bookings','rooms', 'users'));
+        return view('admin.booking.index', compact('bookings','rooms', 'users', 'room_id', 'date'));
 
     }
 
@@ -53,6 +67,33 @@ class BookingController extends Controller
      */
     public function store(RequestBooking $request)
     {
+
+        $booking_start_date = $request->input('start_date');
+        $currentDateTime = Carbon::now('Asia/Tbilisi')->format('Y-m-d H:i:s');
+
+        if ($currentDateTime > $booking_start_date ) {
+            return response()->json(['message' => 'დღევანდელი ჯავშნის დრო გასულია'], 400);
+        }
+
+
+        $room_id = $request->room_id;
+
+        $room = Room::select('rooms.id', 'rooms.start_date', 'rooms.end_date')
+            ->where('id', '=', $room_id)
+            ->first();
+
+        $room_end_date = $room->end_date;
+        $room_end_date_subtract_hour = Carbon::createFromFormat('H:i', $room_end_date)
+            ->subHour()
+            ->setDate(Carbon::now()->year, Carbon::now()->month, Carbon::now()->day)
+            ->toDateTimeString();
+
+        $booking_date = Carbon::parse($booking_start_date)->format('Y-m-d');
+        $current_date = Carbon::now()->format('Y-m-d');
+
+        if (($booking_date == $current_date) && ($booking_start_date > $room_end_date_subtract_hour) ) {
+            return response()->json(['message' => 'ჯავშანი შეუძლებელია აირჩიეთ ვალიდური დრო'], 400);
+        }
 
         $booking = Booking::create([
             'room_id' => $request->room_id,
@@ -87,38 +128,6 @@ class BookingController extends Controller
             'booking' => $booking
         ]);
 
-
-    }
-
-    /**
-     * Filter Booking
-     */
-    public function filter(Request $request)
-    {
-        $room_id = $request->input('room__filter');
-        $date = $request->input('date__filter');
-
-
-        $query = Booking::select('bookings.id', 'rooms.name as room_name', 'users.name as user_name', 'bookings.start_date', 'bookings.end_date', 'bookings.created_at', 'bookings.updated_at')
-            ->join('rooms', 'rooms.id', '=', 'bookings.room_id')
-            ->join('users', 'users.id', '=', 'bookings.user_id')
-            ->orderBy('id', 'DESC');
-
-
-        if ($room_id) {
-            $query->where('bookings.room_id', '=', $room_id);
-        }
-
-        if ($date) {
-            $query->whereDate('bookings.start_date', '=', $date);
-        }
-
-        $bookings = $query->get();
-
-        $rooms = Room::all();
-        $users = User::all();
-
-        return view('admin.booking.index', compact('bookings','rooms', 'users', 'room_id', 'date'));
 
     }
 

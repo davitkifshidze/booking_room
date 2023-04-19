@@ -4,8 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\RequestRoom;
-use App\Models\Admin\Room;
-use Illuminate\Http\Request;
+use App\Models\Room;
 
 class RoomController extends Controller
 {

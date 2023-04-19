@@ -29,11 +29,11 @@
 
                         <input type="time" id="start_date" name="start_date" list="start_date_list" >
                         <datalist id="start_date_list">
-                            @for ($i = 0; $i <= 24; $i++)
-                                @if($i < 10)
-                                    <option value="0{{ $i + 1 }}:00">
+                            @for ($i = 1; $i <= 24; $i++)
+                                @if($i <= 9)
+                                    <option value="0{{ $i }}:00">
                                 @else
-                                    <option value="{{ $i + 1 }}:00">
+                                    <option value="{{ $i }}:00">
                                 @endif
                             @endfor
                         </datalist>
@@ -45,11 +45,11 @@
                         </label>
                         <input type="time" id="end_date" name="end_date" list="end_date_list" >
                         <datalist id="end_date_list">
-                            @for ($i = 0; $i <= 24; $i++)
-                                @if($i < 10)
-                                    <option value="0{{ $i + 1 }}:00">
+                            @for ($i = 1; $i <= 24; $i++)
+                                @if($i <= 9)
+                                    <option value="0{{ $i }}:00">
                                 @else
-                                    <option value="{{ $i + 1 }}:00">
+                                    <option value="{{ $i }}:00">
                                 @endif
                             @endfor
                         </datalist>

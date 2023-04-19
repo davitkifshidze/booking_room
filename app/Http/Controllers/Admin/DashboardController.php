@@ -3,14 +3,12 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Models\Admin\Booking;
-use App\Models\Admin\Room;
-use App\Models\Admin\User;
-use Illuminate\Http\Request;
+use App\Models\Booking;
+use App\Models\Room;
+use App\Models\User;
 
 class DashboardController extends Controller
 {
-    //
     public function index()
     {
 

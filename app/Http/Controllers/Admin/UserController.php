@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\RequestUser;
 use App\Models\Admin\Category;
 use App\Models\Admin\CategoryTranslation;
-use App\Models\Admin\User;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 

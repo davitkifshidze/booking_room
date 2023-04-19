@@ -54,6 +54,7 @@ function createRoom() {
                     }).then(function() {
                         closeModal('modal');
                         $('#room_create_form input:not([type="submit"], textarea)').not('[name="_token"]').val('');
+                        location.reload();
                     });
                 }
             },
@@ -99,6 +100,7 @@ function editRoom() {
                         title: 'ოთახი წარმატებით განახლდა'
                     }).then(function() {
                         closeModal('modal');
+                        location.reload();
                     });
                 }
             },

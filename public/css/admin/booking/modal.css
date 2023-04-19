@@ -156,3 +156,11 @@
     padding: 30px !important;
     margin: 30px !important;
 }
+.booking__error{
+    display: flex;
+    width: 100%;
+    color: red;
+    font-size: 12px;
+    font-weight: bold;
+    padding-left: 10px;
+}

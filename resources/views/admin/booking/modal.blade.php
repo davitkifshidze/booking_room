@@ -43,6 +43,9 @@
                     <div id="booking__calendar" class="booking-datetime"></div>
                 </div>
 
+                <div class="booking__error" id="booking__error"></div>
+
+
                 <div class="form__buttons">
                     <input class="modal__btn" type="submit">
                 </div>

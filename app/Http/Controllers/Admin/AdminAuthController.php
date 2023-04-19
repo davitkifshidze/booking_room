@@ -4,11 +4,11 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\AdminLogin;
+use App\Providers\RouteServiceProvider;
 use Illuminate\Http\Request;
 
 class AdminAuthController extends Controller
 {
-    //
 
     public function __construct()
     {
@@ -44,7 +44,7 @@ class AdminAuthController extends Controller
             auth()->guard('admin')->logout();
             session()->invalidate();
             session()->regenerateToken();
-            return redirect()->route('login.show')->with('logout', __('თქვენ წარმატებით დატოვეთ სისტემა!'));
+            return redirect()->route('admin_login_show')->with('logout', __('თქვენ წარმატებით დატოვეთ სისტემა!'));
         }
 
     }

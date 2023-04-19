@@ -5,6 +5,11 @@ use App\Http\Controllers\Admin\BookingController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\RoomController;
 use App\Http\Controllers\Admin\UserController;
+use App\Http\Controllers\Site\HomeController;
+use App\Http\Controllers\Site\User\RegisterController;
+use App\Http\Controllers\Site\User\UserBookingController;
+use App\Http\Controllers\Site\User\UserDashboardController;
+use App\Http\Controllers\Site\User\UserAuthController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -20,8 +25,8 @@ use Illuminate\Support\Facades\Route;
 
 Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function () {
 
-    Route::get('/', [AdminAuthController::class, 'show'])->name('login.show');
-    Route::get('/login', [AdminAuthController::class, 'show'])->name('login.show');
+    Route::get('/', [AdminAuthController::class, 'show'])->name('admin_login_show');
+    Route::get('/login', [AdminAuthController::class, 'show'])->name('admin_login_show');
     Route::post('/login', [AdminAuthController::class, 'login'])->name('login');
 
     Route::group(['middleware' => 'adminAuth'], function () {
@@ -47,9 +52,46 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function () {
         Route::post('/booking/create', [BookingController::class, 'store'])->name('create_booking');
         Route::delete('/booking/{id}', [BookingController::class, 'destroy'])->name('delete_booking');
         Route::get('/booking/room/{id}', [BookingController::class, 'room'])->name('room');
-        Route::post('/booking/filter', [BookingController::class, 'filter'])->name('filter');
-
 
     });
+
+});
+
+Route::group(['namespace' => 'Site'], function () {
+
+    Route::get('/', [HomeController::class, 'index'])->name('home');
+
+    Route::group(['prefix' => 'user'], function () {
+
+        Route::get('/', [UserAuthController::class, 'show'])->name('user_login_show');
+        Route::get('/login', [UserAuthController::class, 'show'])->name('user_login_show');
+        Route::post('/login', [UserAuthController::class, 'login'])->name('user_login');
+        Route::get('/registration', [RegisterController::class, 'show'])->name('user_registration_show');
+        Route::post('/registration', [RegisterController::class, 'register'])->name('user_register');
+
+        Route::group(['middleware' => 'userAuth'], function () {
+
+            Route::get('/', [UserDashboardController::class, 'index'])->name('user_dashboard');
+            Route::get('/dashboard', [UserDashboardController::class, 'index'])->name('user_dashboard');
+
+            Route::get('/booking', [UserBookingController::class, 'index'])->name('user_booking');
+            Route::delete('/booking/{id}', [UserBookingController::class, 'destroy'])->name('delete_user_booking');
+            Route::get('/booking/create', [UserBookingController::class, 'create'])->name('user_booking_form');
+            Route::get('/booking/room/{id}', [UserBookingController::class, 'room'])->name('user_room');
+            Route::post('/booking/create', [UserBookingController::class, 'store'])->name('create_booking');
+
+        });
+
+    });
+
+    Route::group(['prefix' => 'tablet'], function () {
+
+//    Route::get('/room', [SiteRoomController::class, 'index'])->name('room');
+//    Route::get('/room/{id}', [SiteRoomController::class, 'create'])->name('show_room');
+//    Route::get('/room/{id}/booking', [SiteRoomController::class, 'room'])->name('room_booking');
+
+    });
+
+
 
 });
