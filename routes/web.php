@@ -95,7 +95,6 @@ Route::group(['namespace' => 'Site'], function () {
         Route::post('/room/user', [TabletController::class, 'user'])->name('check_user');
         Route::post('/room/create', [TabletController::class, 'store'])->name('tablet_booking');
 
-
     });
 
 

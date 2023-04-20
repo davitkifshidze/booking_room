@@ -16,6 +16,10 @@
 
     <div class="login__page">
 
+        <div class="back__btn">
+            <a href="{{ route('home') }}">მთავარი</a>
+        </div>
+
         <div class="login__page__container">
 
             <div class="login__left__container">

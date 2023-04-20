@@ -23,6 +23,10 @@
     <div class="login__page">
 
 
+        <div class="back__btn">
+            <a href="{{ route('home') }}">მთავარი</a>
+        </div>
+
         <div class="registration__btn">
             <a href="{{ route('user_registration_show') }}">რეგისტრაცია</a>
         </div>

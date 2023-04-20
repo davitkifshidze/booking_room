@@ -34,6 +34,7 @@
                 <input type="hidden" name="room_id" id="room_id" value="{{ $room_id }}">
 
                 <input type="hidden" name="personal_number" id="personal_number" value="">
+                <input type="hidden" name="user_id" id="user_id" value="">
 
                 <div class="start__booking">აირჩიე ჯავშნის პერიოდი</div>
 

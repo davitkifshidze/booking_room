@@ -32,8 +32,6 @@ class TabletController extends Controller
     public function store(RequestTabletBooking $request)
     {
 
-        dd($request);
-
         $booking_start_date = $request->input('start_date');
         $currentDateTime = Carbon::now('Asia/Tbilisi')->format('Y-m-d H:i:s');
 

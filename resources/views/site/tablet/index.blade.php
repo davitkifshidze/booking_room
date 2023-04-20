@@ -19,16 +19,29 @@
 @section('content')
 
 
-    <div class="home__container">
-        <div class="room__container">
 
-            @foreach($rooms as $key => $room)
-                <a href="{{ 'room/' . $room->id }}" class="room">
-                    {{ $room->name }}
-                </a>
-            @endforeach()
+
+    <div class="tablet__container">
+
+        <div class="room__outer__container">
+
+            <div class="room__header">
+                <a class="back__btn" href="{{ route('home') }}">მთავარი</a>
+            </div>
+
+            <div class="room__container">
+
+                @foreach($rooms as $key => $room)
+                    <a href="{{ 'room/' . $room->id }}" class="room">
+                        {{ $room->name }}
+                    </a>
+                @endforeach()
+
+            </div>
 
         </div>
+
+
     </div>
 
 @endsection

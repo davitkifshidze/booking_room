@@ -51,44 +51,73 @@ function getCurrentDateTimeRoundUp() {
 }
 
 // Create Booking Ajax Request
-function createBooking() {
-    // $( "#room_booking_form" ).submit();
-    $('#room_booking_form').submit(function(event) {
-        console.log(this, '111');
-        event.preventDefault();
-        $.ajax({
-            url: $(this).attr('action'),
-            method: $(this).attr('method'),
-            data: $(this).serialize(),
-            dataType: 'json',
-            success: function(response) {
-                if(response.success) {
-                    const Toast = Swal.mixin({
-                        toast: true,
-                        position: 'top-end',
-                        showConfirmButton: false,
-                        timer: 1500,
-                        timerProgressBar: true,
-                        didOpen: (toast) => {
-                            toast.addEventListener('mouseenter', Swal.stopTimer)
-                            toast.addEventListener('mouseleave', Swal.resumeTimer)
-                        }
-                    })
+function CreateBooking(){
+    const start_date = document.getElementById('start_date').value;
+    const end_date = document.getElementById('end_date').value;
+    const user_id = document.getElementById('user_id').value;
+    const room_id = document.getElementById('room_id').value;
+    const action = 'create';
 
-                    Toast.fire({
-                        icon: 'success',
-                        title: 'ჯავშანი წარმატებით დაემატა'
-                    }).then(function() {
-                        // location.reload();
-                    });
-                }
-            },
-            error: function(response) {
+    let data = {
+        start_date:start_date,
+        end_date:end_date,
+        user_id:user_id,
+        room_id:room_id
+    }
 
+    $.ajax({
+        url: action,
+        method: 'POST',
+        data: data,
+        dataType: 'json',
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        },
+        success: function(response) {
+            if(response.success) {
+                const Toast = Swal.mixin({
+                    toast: true,
+                    position: 'top-end',
+                    showConfirmButton: false,
+                    timer: 1500,
+                    timerProgressBar: true,
+                    didOpen: (toast) => {
+                        toast.addEventListener('mouseenter', Swal.stopTimer)
+                        toast.addEventListener('mouseleave', Swal.resumeTimer)
+                    }
+                })
 
+                Toast.fire({
+                    icon: 'success',
+                    title: 'ჯავშანი წარმატებით დაემატა'
+                }).then(function() {
+                    location.reload();
+                });
             }
-        });
+        },
+        error: function(response) {
+            const Toast = Swal.mixin({
+                toast: true,
+                position: 'top-end',
+                showConfirmButton: false,
+                timer: 1500,
+                timerProgressBar: true,
+                didOpen: (toast) => {
+                    toast.addEventListener('mouseenter', Swal.stopTimer)
+                    toast.addEventListener('mouseleave', Swal.resumeTimer)
+                }
+            })
+
+            Toast.fire({
+                icon: 'warning',
+                title: 'დაჯავშნისას დაფიქსირდა პრობლემ'
+            }).then(function() {
+                location.reload();
+            });
+
+        }
     });
+
 }
 
 
@@ -106,11 +135,8 @@ $.ajax({
             booking__btn.addEventListener('click', function(event) {
                 event.preventDefault();
 
-                console.log(personal_number_input);
 
                 if (!personal_number_input.value) {
-
-                    console.log('222');
 
 
                     const hidden__modal = document.getElementById('hidden__modal');
@@ -137,9 +163,13 @@ $.ajax({
                             success: function (response) {
                                 if (response.success) {
 
+                                    console.log(response);
+
                                     const user = response.user;
                                     const user_personal_number = document.getElementById('personal_number');
+                                    const user_id = document.getElementById('user_id');
                                     user_personal_number.value = user.personal_number;
+                                    user_id.value = user.id;
 
                                     const Toast = Swal.mixin({
                                         toast: true,
@@ -157,8 +187,9 @@ $.ajax({
                                         title: 'მომხმარებელი იდენტიფიცირებულია'
                                     }).then(function() {
                                         hidden__modal.style.display = 'none';
-                                        // $( "#room_booking_form" ).submit();
-                                        createBooking();
+
+                                        CreateBooking();
+
                                     });
 
 

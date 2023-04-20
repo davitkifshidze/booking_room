@@ -184,3 +184,21 @@ input:focus {
     font-weight: bold;
     color: red;
 }
+.back__btn {
+    position: absolute;
+    left: 20px;
+    top: 20px;
+    height: 50px;
+    width: 150px;
+}
+.back__btn a {
+    width: 100%;
+    height: 100%;
+    background-color: var(--white);
+    color: var(--dash-blue);
+    border-radius: 5px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
