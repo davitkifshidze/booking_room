@@ -1,9 +1,8 @@
 <?php
 
-namespace App\Http\Controllers\Site;
+namespace App\Http\Controllers\Site\Tablet;
 
 use App\Http\Controllers\Controller;
-use App\Models\User;
 use App\Models\Booking;
 use App\Models\Room;
 

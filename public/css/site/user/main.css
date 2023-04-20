@@ -60,6 +60,12 @@
     width: 100%;
     overflow-y: auto;
     overflow-x: hidden;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    overflow-x: hidden;
+    flex-direction: column;
+    justify-content: space-between;
 }
 
 .sidebar__main__content::-webkit-scrollbar {
@@ -135,6 +141,31 @@
     color: white;
 }
 
+
+.logout__container{
+    height: 50px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--dash-blue);
+}
+.logout__container a{
+    font-size: 16px;
+    color: var(--white);
+    width: 100%;
+    text-align: center;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.logout__container span{
+    font-size: 16px;
+    color: var(--white);
+    margin:0 10px;
+}
+
 /** Start User Sidebar Submenu **/
 .sidebar__submenu {
     flex-direction: column;
@@ -200,6 +231,11 @@
 
 .shrink .sidebar__menu__title {
     opacity: 0;
+    pointer-events: none;
+    transition-delay: 0.2s;
+}
+.shrink .sidebar__menu__title__logout {
+    display: none;
     pointer-events: none;
     transition-delay: 0.2s;
 }

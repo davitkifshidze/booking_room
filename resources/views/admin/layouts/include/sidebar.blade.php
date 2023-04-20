@@ -46,5 +46,13 @@
                 </a>
             </li>
         </ul>
+
+        <div class="logout__container">
+            <a href="{{ route('admin_logout') }}">
+                <i class="fa-solid fa-right-from-bracket"></i>
+                <span class="sidebar__menu__title__logout">გასვლა</span>
+            </a>
+        </div>
+
     </div>
 </nav>

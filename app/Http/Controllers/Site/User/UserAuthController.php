@@ -28,10 +28,23 @@ class UserAuthController extends Controller
 
         if (auth()->guard('user')->attempt($credentials))
         {
-            return redirect()->route('user');
+            return redirect()->route('user_dashboard');
         } else {
             return back()->withInput()->with('wrong_fields', __('არასწორი ინფორმაცია. სცადეთ თავიდან'));
         }
+    }
+
+    public function logout()
+    {
+
+        if(auth()->guard('user')->check())
+        {
+            auth()->guard('user')->logout();
+            session()->invalidate();
+            session()->regenerateToken();
+            return redirect()->route('admin_login_show')->with('logout', __('თქვენ წარმატებით დატოვეთ სისტემა!'));
+        }
+
     }
 
 }

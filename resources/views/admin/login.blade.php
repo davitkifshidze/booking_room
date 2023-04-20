@@ -61,8 +61,7 @@
                     </div>
 
                     <div>
-                       <p class="login__info">ელ-ფოსტა: booking_room@gmail.com</p>
-                       <p class="login__info">პაროლი: admin</p>
+                       <p class="login__info">ადმინისტრატორის მონაცემები იხილეთ გიტზე</p>
                     </div>
 
                     <div class="login__form__group">

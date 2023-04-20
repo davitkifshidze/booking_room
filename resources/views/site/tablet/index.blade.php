@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="{{ asset('css/site/app.css') }}">
     <link rel="stylesheet" href="{{ asset('css/site/main.css') }}">
 
-    <link rel="stylesheet" href="{{ asset('css/site/room/index.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/site/tablet/index.css') }}">
 
 
 @endsection

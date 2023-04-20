@@ -1,0 +1,126 @@
+.tablet__booking__container{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.booking__form{
+    width: 100%;
+    border-radius: 15px;
+    border: 5px solid var(--dash-blue-box);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 30px;
+}
+.mbsc-ios.mbsc-datepicker-inline{
+    border: none !important;
+}
+.start__booking{
+    font-size: 24px;
+    font-weight: bold;
+    color: var(--dash-blue);
+    margin: 15px 0;
+}
+
+.booking__btn{
+    background: var(--dash-blue);
+    border: none;
+    padding: 15px 30px;
+    color: white;
+    font-size: 16px;
+    border-radius: 10px;
+}
+.form__container{
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.form__header{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    margin:20px 0;
+}
+
+.back__btn{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 15px 30px;
+    background-color: var(--dash-blue-box);
+    color: var(--dash-blue);
+}
+.user__btn{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 15px 30px;
+    background-color: var(--dash-blue-box);
+    color: var(--dash-blue);
+}
+.hidden__modal{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    z-index: 2;
+    background-color: var(--dash-blue-box);
+    padding: 50px;
+    width: 600px;
+}
+.modal__input__group{
+    display: flex;
+    flex-direction: column;
+    margin: 20px 0;
+}
+.modal__input__group label{
+    font-size: 16px;
+    color: var(--black);
+    margin: 5px 0 15px 0;
+}
+.modal__input__group input{
+    border:1px solid var(--gray-main);
+    border-radius: 5px;
+    padding: 10px;
+}
+.check__user__btn{
+    background-color: var(--dash-blue);
+    color: var(--white);
+    border:none;
+    padding: 15px 40px;
+    border-radius: 10px;
+}
+.btn__container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.close__container{
+    width: 100%;
+    position: relative;
+}
+.close {
+    position: absolute;
+    right: 0px;
+    top: -15px;
+    cursor: pointer;
+}
+.close svg{
+    font-size: 24px;
+    color: var(--red);
+}
+.booking__error{
+    display: flex;
+    width: 100%;
+    color: red;
+    font-size: 12px;
+    font-weight: bold;
+    margin-bottom: 15px;
+}

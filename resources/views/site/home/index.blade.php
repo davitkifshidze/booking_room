@@ -28,7 +28,7 @@
         </div>
 
         <div class="room__container">
-            <a href="">
+            <a href="{{ route('tablet') }}">
                 პლანშეტის ინტერფეისი
             </a>
         </div>

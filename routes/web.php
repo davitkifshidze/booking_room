@@ -6,6 +6,7 @@ use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\RoomController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Site\HomeController;
+use App\Http\Controllers\Site\Tablet\TabletController;
 use App\Http\Controllers\Site\User\RegisterController;
 use App\Http\Controllers\Site\User\UserBookingController;
 use App\Http\Controllers\Site\User\UserDashboardController;
@@ -33,7 +34,7 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function () {
 
         Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
         Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
-        Route::get('/logout', [AdminAuthController::class, 'logout'])->name('logout');
+        Route::get('/logout', [AdminAuthController::class, 'logout'])->name('admin_logout');
 
         Route::get('/user', [UserController::class, 'index'])->name('user_list');
         Route::post('/user/create', [UserController::class, 'store'])->name('create_user');
@@ -71,6 +72,7 @@ Route::group(['namespace' => 'Site'], function () {
 
         Route::group(['middleware' => 'userAuth'], function () {
 
+            Route::get('/logout', [UserAuthController::class, 'logout'])->name('user_logout');
             Route::get('/', [UserDashboardController::class, 'index'])->name('user_dashboard');
             Route::get('/dashboard', [UserDashboardController::class, 'index'])->name('user_dashboard');
 
@@ -86,9 +88,13 @@ Route::group(['namespace' => 'Site'], function () {
 
     Route::group(['prefix' => 'tablet'], function () {
 
-//    Route::get('/room', [SiteRoomController::class, 'index'])->name('room');
-//    Route::get('/room/{id}', [SiteRoomController::class, 'create'])->name('show_room');
-//    Route::get('/room/{id}/booking', [SiteRoomController::class, 'room'])->name('room_booking');
+        Route::get('/', [TabletController::class, 'index'])->name('tablet');
+        Route::get('/room', [TabletController::class, 'index'])->name('tablet');
+        Route::get('/room/{id}', [TabletController::class, 'create'])->name('show_room');
+        Route::get('/room/{id}/booking', [TabletController::class, 'room'])->name('room_booking');
+        Route::post('/room/user', [TabletController::class, 'user'])->name('check_user');
+        Route::post('/room/create', [TabletController::class, 'store'])->name('tablet_booking');
+
 
     });
 
