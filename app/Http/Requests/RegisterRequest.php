@@ -25,7 +25,7 @@ class RegisterRequest extends FormRequest
             'name' => 'required|string|min:2|max:25|regex:/^[\p{L}]+$/u',
             'surname' => 'required|string|min:3|max:25|regex:/^[\p{L}]+$/u',
             'personal_number' => 'required|numeric|digits:11|unique:users,personal_number',
-            'password' => 'required|string|min:8',
+            'password' => ['required', 'regex:/^[a-zA-Z0-9!@#$%^&*()_+{}\|:"<>?`~\-=\[\];\',.\/]+$/','min:8'],
         ];
     }
 }

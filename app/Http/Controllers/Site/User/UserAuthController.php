@@ -4,14 +4,16 @@ namespace App\Http\Controllers\Site\User;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Route;
 
 class UserAuthController extends Controller
 {
 
     public function __construct()
     {
-        //Login Page can be viewd by anyone
-        $this->middleware("guest:user");
+        if (!Route::is('user_logout')):
+            $this->middleware("guest:user");
+        endif;
     }
 
     /**
@@ -42,7 +44,7 @@ class UserAuthController extends Controller
             auth()->guard('user')->logout();
             session()->invalidate();
             session()->regenerateToken();
-            return redirect()->route('admin_login_show')->with('logout', __('თქვენ წარმატებით დატოვეთ სისტემა!'));
+            return redirect()->route('user_login_show')->with('logout', __('თქვენ წარმატებით დატოვეთ სისტემა!'));
         }
 
     }

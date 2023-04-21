@@ -163,8 +163,6 @@ $.ajax({
                             success: function (response) {
                                 if (response.success) {
 
-                                    console.log(response);
-
                                     const user = response.user;
                                     const user_personal_number = document.getElementById('personal_number');
                                     const user_id = document.getElementById('user_id');

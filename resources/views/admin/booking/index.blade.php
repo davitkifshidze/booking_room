@@ -75,7 +75,7 @@
                             <tr>
                                 <td class="tbody__td">{{ $booking->id }}</td>
                                 <td class="tbody__td">{{ $booking->room_name }}</td>
-                                <td class="tbody__td">{{ $booking->user_name }}</td>
+                                <td class="tbody__td">{{ $booking->user_name . ' ' . $booking->user_surname }}</td>
                                 <td class="tbody__td">{{ $booking->start_date }}</td>
                                 <td class="tbody__td">{{ $booking->end_date }}</td>
                                 <td class="tbody__td">{{ $booking->created_at }}</td>

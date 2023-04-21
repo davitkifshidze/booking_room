@@ -22,7 +22,7 @@ class BookingController extends Controller
         $room_id = $request->input('room__filter');
         $date = $request->input('date__filter');
 
-        $query = Booking::select('bookings.id', 'rooms.name as room_name', 'users.name as user_name', 'bookings.start_date', 'bookings.end_date', 'bookings.created_at', 'bookings.updated_at')
+        $query = Booking::select('bookings.id', 'rooms.name as room_name', 'users.name as user_name', 'users.surname as user_surname', 'bookings.start_date', 'bookings.end_date', 'bookings.created_at', 'bookings.updated_at')
             ->join('rooms', 'rooms.id', '=', 'bookings.room_id')
             ->join('users', 'users.id', '=', 'bookings.user_id')
             ->orderBy('bookings.id', 'DESC');

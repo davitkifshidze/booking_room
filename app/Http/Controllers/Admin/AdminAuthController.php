@@ -6,14 +6,16 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\AdminLogin;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Route;
 
 class AdminAuthController extends Controller
 {
 
     public function __construct()
     {
-        //Login Page can be viewd by anyone
-        $this->middleware("guest:admin");
+        if (!Route::is('admin_logout')):
+            $this->middleware("guest:admin");
+        endif;
     }
 
     /**
